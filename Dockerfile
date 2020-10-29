@@ -23,7 +23,14 @@ RUN npm install --production
 COPY ./public ./public
 COPY --from=build /app/.next ./.next
 
-ENV NEXTAUTH_URL=''
+ENV FIRST_USER_USERNAME='' \
+    FIRST_USER_PASSWORD='' \
+    NEXTAUTH_URL='' \
+    DATABASE_URL='' \
+    SESSION_SECRET='' \
+    JWT_SECRET='' \
+    EMAIL_SERVER='' \
+    EMAIL_FROM=''
 
 EXPOSE 80
 CMD npm run start:prod
