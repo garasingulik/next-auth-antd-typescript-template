@@ -1,3 +1,4 @@
+import '../styles/global.less';
 import { Provider } from 'next-auth/client'
 
 const App = ({ Component, pageProps }) => {
