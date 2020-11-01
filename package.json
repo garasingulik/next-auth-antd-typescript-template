@@ -1,5 +1,5 @@
 {
-  "name": "with-ant-design-pro-layout-less",
+  "name": "next-auth-antd-typescript-template",
   "version": "1.0.0",
   "scripts": {
     "dev": "next -p 3000",
