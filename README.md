@@ -1,21 +1,5 @@
-# Ant Design Pro Layout example
+# Next.js + NextAuth.js + AntD + TypeScript Template
 
-This example shows how to use Next.js along with [Ant Design Pro Layout](https://github.com/ant-design/ant-design-pro-layout) of React. This is intended to show the integration of this UI toolkit with the Framework.
+This template is a homebrew template that I mainly use to bootstrap a new frontend project. It was based on official [Next.js with Ant Design Pro Layout Less](https://github.com/vercel/next.js/tree/canary/examples/with-ant-design-pro-layout-less) template with additional things that I mostly use in my projects.
 
-## Deploy your own
-
-Deploy the example using [Vercel](https://vercel.com):
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/vercel/next.js/tree/canary/examples/with-ant-design-pro-layout-less)
-
-## How to use
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
-
-```bash
-npx create-next-app --example with-ant-design-pro-layout-less with-ant-design-app
-# or
-yarn create next-app --example with-ant-design-pro-layout-less with-ant-design-app
-```
-
-Deploy it to the cloud with [Vercel](https://vercel.com/import?filter=next.js&utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+The template has been preconfigured with basic [NextAuth.js](https://next-auth.js.org/) credentials authentication using sqlite backend (not recommended for production), and ofcourse you can change this database backend with any database of your preference that is supported by NextAuth.js TypeORM Adapter.
