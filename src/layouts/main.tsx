@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 
 import { useRouter } from 'next/router'
-import { useSession } from 'next-auth/client'
+import { useSession, getSession } from 'next-auth/client'
 
 import {
   SmileOutlined,
@@ -14,7 +15,8 @@ import {
 import { Route, MenuDataItem } from '@ant-design/pro-layout/lib/typings'
 import { SiderMenuProps } from '@ant-design/pro-layout/lib/SiderMenu/SiderMenu'
 
-import UserMenu from '../components/UserLoginMenu'
+import RightContent from '../components/GlobalHeader/RightContent'
+import User from '../lib/db/models/User'
 
 const ProLayout = dynamic(() => import('@ant-design/pro-layout'), {
   ssr: false,
@@ -62,9 +64,9 @@ const menuItemRender = (options: MenuDataItem, element: React.ReactNode) => (
   </Link>
 )
 
-const rightContentRenderer = () => {
+const rightContentRenderer = (currentUser) => {
   return (
-    <UserMenu />
+    <RightContent currentUser={currentUser} />
   )
 }
 
@@ -72,6 +74,17 @@ const MainLayout: React.FC = ({ children }) => {
   
   const router = useRouter()
   const [session, loading] = useSession()
+
+  const [currentUser, setCurrentUser] = useState<User>(undefined)
+
+  const getCurrentUser = async () => {
+    const currentUser = await getSession()
+    setCurrentUser(currentUser.user)
+  }
+
+  useEffect(() => {
+    getCurrentUser()
+  }, [])
 
   // When rendering client side don't display anything until loading is complete
   if (typeof window !== 'undefined' && loading) return null
@@ -92,8 +105,8 @@ const MainLayout: React.FC = ({ children }) => {
       style={{ minHeight: '100vh' }}
       route={ROUTES}
       menuItemRender={menuItemRender}
-      menuHeaderRender={menuHeaderRender}      
-      rightContentRender={rightContentRenderer}
+      menuHeaderRender={menuHeaderRender}            
+      rightContentRender={() => rightContentRenderer(currentUser)}
     >
       {children}
     </ProLayout>
