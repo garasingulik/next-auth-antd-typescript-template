@@ -1,2 +1,30 @@
 /* Set your custom style here */
-@import './style.less';
+@import '~antd/lib/style/themes/default.less';
+@import '~antd/dist/antd.less';
+
+.ant-menu-submenu-horizontal {
+  height: auto!important;
+}
+
+.header-right-content {  
+  display: flex;
+  color: @text-color-dark;
+  .action {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 12px;
+    cursor: pointer;
+    transition: all 0.3s;
+    > span {    
+      vertical-align: middle;
+    }
+  }
+  .account {
+    .avatar {      
+      margin-right: 8px;
+      color: @primary-color;      
+      background: rgba(255, 255, 255, 0.85);
+    }
+  } 
+}

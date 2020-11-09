@@ -10,7 +10,7 @@ interface RightContentProps {
 const RightContent: React.FC<RightContentProps> = (props) => {
   const { currentUser } = props
   return (
-    <div className="rightContent">
+    <div className="header-right-content">
       <Avatar menu currentUser={currentUser}/>
     </div>
   )

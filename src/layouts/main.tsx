@@ -106,6 +106,7 @@ const MainLayout: React.FC = ({ children }) => {
       route={ROUTES}
       menuItemRender={menuItemRender}
       menuHeaderRender={menuHeaderRender}            
+      layout={"top"}
       rightContentRender={() => rightContentRenderer(currentUser)}
     >
       {children}

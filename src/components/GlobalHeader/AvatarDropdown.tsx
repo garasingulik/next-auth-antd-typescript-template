@@ -30,20 +30,20 @@ export const AvatarDropdown: React.FC<AvatarDropdownProps> = (props) => {
   const menuHeaderDropdown = (
     <Menu className="menu" selectedKeys={[]} onClick={onMenuClick}>
       {menu && (
-        <Menu.Item key="center">
+        <Menu.Item key="center" className="menu-item">
           <UserOutlined />
             Account Center
         </Menu.Item>
       )}
       {menu && (
-        <Menu.Item key="settings">
+        <Menu.Item key="settings" className="menu-item">
           <SettingOutlined />
             Settings
         </Menu.Item>
       )}
       {menu && <Menu.Divider />}
 
-      <Menu.Item key="logout">
+      <Menu.Item key="logout" className="menu-item">
         <LogoutOutlined />
           Logout
         </Menu.Item>
