@@ -16,8 +16,8 @@ Before we run the project, create one `.env.local` file in the root of the proje
 
 ```
 # first user
-FIRST_USER_USERNAME=admin@firstuser.com
-FIRST_USER_PASSWORD=admin
+FIRST_USER_USERNAME=<first user that will automatically created>
+FIRST_USER_PASSWORD=<first user password>
 
 # auth
 NEXTAUTH_URL=http://localhost:3000
