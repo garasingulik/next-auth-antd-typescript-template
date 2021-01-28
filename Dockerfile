@@ -13,7 +13,7 @@ COPY . ./
 RUN npm run build
 
 # production environment
-FROM node:14.15.4-buster-slim
+FROM node:14.15.4-buster
 WORKDIR /app
 
 ENV PATH /app/node_modules/.bin:$PATH
