@@ -9,17 +9,17 @@ import { useSession, getSession } from 'next-auth/client'
 import {
   SmileOutlined,
   SettingOutlined,
-  PlaySquareOutlined,
+  PlaySquareOutlined
 } from '@ant-design/icons'
 
 import { Route, MenuDataItem } from '@ant-design/pro-layout/lib/typings'
-import { SiderMenuProps } from '@ant-design/pro-layout/lib/SiderMenu/SiderMenu'
 
 import RightContent from '../components/GlobalHeader/RightContent'
 import User from '../lib/db/models/User'
+import { SiderMenuProps } from '@ant-design/pro-layout/lib/components/SiderMenu/SiderMenu'
 
 const ProLayout = dynamic(() => import('@ant-design/pro-layout'), {
-  ssr: false,
+  ssr: false
 })
 
 const ROUTES: Route = {
@@ -33,16 +33,16 @@ const ROUTES: Route = {
         {
           path: '/welcome',
           name: 'Account Settings',
-          icon: <SettingOutlined />,
-        },
-      ],
+          icon: <SettingOutlined />
+        }
+      ]
     },
     {
       path: '/example',
       name: 'Example Page',
-      icon: <PlaySquareOutlined />,
-    },
-  ],
+      icon: <PlaySquareOutlined />
+    }
+  ]
 }
 
 const menuHeaderRender = (
@@ -71,7 +71,6 @@ const rightContentRenderer = (currentUser) => {
 }
 
 const MainLayout: React.FC = ({ children }) => {
-  
   const router = useRouter()
   const [session, loading] = useSession()
 
@@ -105,8 +104,8 @@ const MainLayout: React.FC = ({ children }) => {
       style={{ minHeight: '100vh' }}
       route={ROUTES}
       menuItemRender={menuItemRender}
-      menuHeaderRender={menuHeaderRender}            
-      layout={"top"}
+      menuHeaderRender={menuHeaderRender}
+      layout={'top'}
       rightContentRender={() => rightContentRenderer(currentUser)}
     >
       {children}
