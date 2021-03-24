@@ -1,5 +1,5 @@
 # build environment
-FROM node:14.15.4-buster as build
+FROM node:14.15.5-buster as build
 WORKDIR /app
 
 ENV PATH /app/node_modules/.bin:$PATH
@@ -13,7 +13,7 @@ COPY . ./
 RUN npm run build
 
 # production environment
-FROM node:14.15.4-buster
+FROM node:14.15.5-buster
 WORKDIR /app
 
 ENV PATH /app/node_modules/.bin:$PATH
