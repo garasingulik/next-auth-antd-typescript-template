@@ -1,3 +1,5 @@
+import * as jwt from 'jsonwebtoken'
+
 import NextAuth from 'next-auth'
 import Providers from 'next-auth/providers'
 
@@ -14,8 +16,8 @@ const options = {
       // You can specify whatever fields you are expecting to be submitted.
       // e.g. domain, username, password, 2FA token, etc.
       credentials: {
-        username: { label: "Username", type: "text", placeholder: "Enter username" },
-        password: { label: "Password", type: "password", placeholder: "Enter password" }
+        username: { label: 'Username', type: 'text', placeholder: 'Enter username' },
+        password: { label: 'Password', type: 'password', placeholder: 'Enter password' }
       },
       authorize: async (credentials) => {
         const dbAdapter = await db.getAdapter()
@@ -60,14 +62,22 @@ const options = {
   secret: process.env.SESSION_SECRET,
   session: {
     jwt: true,
-    maxAge: 30 * 24 * 60 * 60, // 30 days
+    maxAge: 30 * 24 * 60 * 60 // 30 days
   },
   jwt: {
     // A secret to use for key generation (you should set this explicitly)
     secret: process.env.JWT_SECRET,
 
     // Set to true to use encryption (default: false)
-    encryption: false
+    encryption: false,
+
+    encode: async ({ secret, token, maxAge }) => {
+      return jwt.sign(token, secret, { algorithm: 'HS512' })
+    },
+
+    decode: async ({ secret, token, maxAge }) => {
+      return jwt.verify(token, secret)
+    }
   },
   callbacks: {
     /**
@@ -79,12 +89,13 @@ const options = {
      */
     signIn: async (user, account, profile) => {
       // no restriction at this point
-      let isAllowedToSignIn = true
+      const isAllowedToSignIn = true
 
       if (isAllowedToSignIn) {
         return Promise.resolve(true)
       } else {
         // redirect to home when no access
+        // eslint-disable-next-line prefer-promise-reject-errors
         return Promise.reject(null)
       }
     },
@@ -97,7 +108,7 @@ const options = {
      * @return {object}            JSON Web Token that will be saved
      */
     jwt: async (token, user, account, profile, isNewUser) => {
-      const isSignIn = (user) ? true : false
+      const isSignIn = !!(user)
       if (isSignIn) {
         token.auth_time = Math.floor(Date.now() / 1000)
       }
