@@ -1,5 +1,5 @@
-import Adapters from "next-auth/adapters"
-import Models from "./models"
+import Adapters from 'next-auth/adapters'
+import Models from './models'
 
 const sqliteConfig = {
   type: 'sqlite',
@@ -33,8 +33,8 @@ const db = Adapters.TypeORM.Adapter(
   // The second argument can be used to pass custom models and schemas
   {
     models: {
-      User: Models.User,
-    },
+      User: Models.User
+    }
   }
 )
 

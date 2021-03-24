@@ -7,7 +7,7 @@ ENV PATH /app/node_modules/.bin:$PATH
 COPY package.json ./
 COPY package-lock.json ./
 
-RUN npm install
+RUN npm install --legacy-peer-deps
 
 COPY . ./
 RUN npm run build
@@ -22,7 +22,7 @@ ENV NODE_ENV production
 COPY package.json ./
 COPY package-lock.json ./
 
-RUN npm install --production
+RUN npm install --production --legacy-peer-deps
 
 COPY ./public ./public
 COPY --from=build /app/.next ./.next
