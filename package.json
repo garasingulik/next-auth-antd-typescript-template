@@ -25,7 +25,7 @@
     "null-loader": "^4.0.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
-    "sqlite3": "^5.0.2",
+    "sqlite3": "^5.1.4",
     "webpack-filter-warnings-plugin": "^1.2.1"
   },
   "license": "MIT",
